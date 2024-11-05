@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,8 +18,42 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.2.0" />
+    <PackageReference Include="Microsoft.ML" Version="3.0.1" />
+    <PackageReference Include="Microsoft.ML.Recommender" Version="0.21.1" />
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="8.23.50" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\SentimentoInput.cs" />
+    <Compile Remove="Enums\**" />
+    <Compile Remove="Models\Mappings\**" />
+    <Compile Remove="Migrations\20240916145347_InitialDB.cs" />
+    <Compile Remove="Migrations\20240916145347_InitialDB.Designer.cs" />
+    <Compile Remove="Migrations\SistemasTarefasDBContextModelSnapshot.cs" />
+    <Compile Remove="ML\Models\ProductPrediction.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Enums\**" />
+    <EmbeddedResource Remove="Models\Mappings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Enums\**" />
+    <Content Remove="Models\Mappings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Enums\**" />
+    <None Remove="Models\Mappings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dataset\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

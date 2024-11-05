@@ -16,57 +16,234 @@ namespace TarefasSPT3.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("TarefasSPT3.Models.Avaliacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Id_Avaliacao");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProdutoId")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("ProdutoId");
+
+                    b.Property<float>("Rating")
+                        .HasColumnType("BINARY_FLOAT")
+                        .HasColumnName("Rating");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("UsuarioId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Avaliacoes");
+                });
+
+            modelBuilder.Entity("TarefasSPT3.Models.Formulario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Id_formulario");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DescricaoAlergia")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("char(200)")
+                        .HasColumnName("DS_ALERGIA");
+
+                    b.Property<string>("DescricaoPele")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("char(20)")
+                        .HasColumnName("DS_PELE");
+
+                    b.Property<string>("StatusAlergia")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("char(1)")
+                        .HasColumnName("ST_ALERGIA");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Id_usuario");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Formularios");
+                });
+
+            modelBuilder.Entity("TarefasSPT3.Models.Produto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Id_produto");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("DS_DESCRICAO");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("NM_PRODUTO");
+
+                    b.Property<decimal>("Preco")
+                        .HasColumnType("number(4,2)")
+                        .HasColumnName("VL_PRECO");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Id_usuario");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Produtos");
+                });
 
             modelBuilder.Entity("TarefasSPT3.Models.TarefaModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Id");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descricao")
+                        .IsRequired()
                         .HasMaxLength(1000)
-                        .HasColumnType("NVARCHAR2(1000)");
+                        .HasColumnType("NVARCHAR2(1000)")
+                        .HasColumnName("Descricao");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("NVARCHAR2(255)");
+                        .HasColumnType("NVARCHAR2(255)")
+                        .HasColumnName("Nome");
 
                     b.Property<int>("Status")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Status");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tarefa");
+                    b.ToTable("Tarefas");
                 });
 
-            modelBuilder.Entity("TarefasSPT3.Models.UsuarioModel", b =>
+            modelBuilder.Entity("TarefasSPT3.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Id_usuario");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<long>("Cpf")
+                        .HasColumnType("number(12)")
+                        .HasColumnName("NR_CPF");
+
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("NVARCHAR2(150)");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("DS_EMAIL");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("NVARCHAR2(255)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("NM_NOME");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("DS_SENHA");
+
+                    b.Property<long>("Telefone")
+                        .HasColumnType("number(16)")
+                        .HasColumnName("NR_TELEFONE");
 
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("TarefasSPT3.Models.Avaliacao", b =>
+                {
+                    b.HasOne("TarefasSPT3.Models.Produto", "Produto")
+                        .WithMany("Avaliacoes")
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TarefasSPT3.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Produto");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("TarefasSPT3.Models.Formulario", b =>
+                {
+                    b.HasOne("TarefasSPT3.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("TarefasSPT3.Models.Produto", b =>
+                {
+                    b.HasOne("TarefasSPT3.Models.Usuario", "Usuario")
+                        .WithMany("Produtos")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("TarefasSPT3.Models.Produto", b =>
+                {
+                    b.Navigation("Avaliacoes");
+                });
+
+            modelBuilder.Entity("TarefasSPT3.Models.Usuario", b =>
+                {
+                    b.Navigation("Produtos");
                 });
 #pragma warning restore 612, 618
         }

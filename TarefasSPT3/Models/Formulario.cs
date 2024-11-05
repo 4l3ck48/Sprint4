@@ -1,36 +1,34 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿// Models/Formulario.cs
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TarefasSPT3.Models
 {
     public class Formulario
     {
-        public int Id_formulario { get; set; }
+        [Key]
+        [Column("Id_formulario")]
+        public int Id { get; set; }
 
-
-        [Column("ST_ALERGIA", TypeName = "char(1)")]
         [Required]
-        [MinLength(1)]
-        [MaxLength(1, ErrorMessage = "O status da alergia deve conter no maximo 1 caracter.")]
+        [StringLength(1, ErrorMessage = "O status da alergia deve conter no máximo 1 caractere.")]
+        [Column("ST_ALERGIA", TypeName = "char(1)")]
         public string StatusAlergia { get; set; }
 
-
-        [Column("DS_ALERGIA", TypeName = "char(200)")]
         [Required]
-        [MaxLength(200, ErrorMessage = "A descricao da alergia deve conter no maximo 200 caracteres.")]
+        [MaxLength(200, ErrorMessage = "A descrição da alergia deve conter no máximo 200 caracteres.")]
+        [Column("DS_ALERGIA", TypeName = "char(200)")]
         public string DescricaoAlergia { get; set; }
 
-        [Column("DS_PELE", TypeName = "char(20)")]
         [Required]
-        [MaxLength(20, ErrorMessage = "A descricao da pele deve conter no maximo 20 caracteres.")]
+        [MaxLength(20, ErrorMessage = "A descrição da pele deve conter no máximo 20 caracteres.")]
+        [Column("DS_PELE", TypeName = "char(20)")]
         public string DescricaoPele { get; set; }
 
-
-        //1 PARA 1
+        // Relacionamento 1 para 1 com Usuario
         [ForeignKey("Usuario")]
-        public int Id_usuario { get; set; }
-        public Usuario? Usuario { get; set; }
-
+        [Column("Id_usuario")]
+        public int UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
     }
 }

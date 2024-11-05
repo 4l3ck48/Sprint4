@@ -1,6 +1,9 @@
-﻿using TarefasSPT3.Models;
+﻿// Repositories/Interfaces/IUsuarioRepositorio.cs
 
-namespace TarefasSPT3.Repositorios.Interfaces
+using Microsoft.EntityFrameworkCore;
+using TarefasSPT3.Models;
+
+namespace TarefasSPT3.Repositories.Interfaces
 {
     public interface IUsuarioRepositorio
     {
@@ -11,3 +14,4 @@ namespace TarefasSPT3.Repositorios.Interfaces
         Task<bool> Apagar(int id);
     }
 }
+

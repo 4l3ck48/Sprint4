@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarefasSPT3", "TarefasSPT3\TarefasSPT3.csproj", "{5248732A-8FCB-4645-BDDA-4E51965A7565}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarefasSPT3.Tests", "TarefasSPT3.Tests\TarefasSPT3.Tests.csproj", "{3BE13BAC-7D74-4B98-A4F0-D21537CE5113}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5248732A-8FCB-4645-BDDA-4E51965A7565}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5248732A-8FCB-4645-BDDA-4E51965A7565}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5248732A-8FCB-4645-BDDA-4E51965A7565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE13BAC-7D74-4B98-A4F0-D21537CE5113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE13BAC-7D74-4B98-A4F0-D21537CE5113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE13BAC-7D74-4B98-A4F0-D21537CE5113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE13BAC-7D74-4B98-A4F0-D21537CE5113}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
